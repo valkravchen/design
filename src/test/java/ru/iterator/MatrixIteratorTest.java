@@ -47,7 +47,6 @@ class MatrixIteratorTest {
         assertThat(iterator.next()).isEqualTo(4);
         assertThat(iterator.hasNext()).isFalse();
     }
-
     @Test
     void whenFewEmpty() {
         int[][] input = {
