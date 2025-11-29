@@ -35,7 +35,6 @@ class MatrixIteratorTest {
         assertThat(iterator.hasNext()).isTrue();
 
     }
-
     @Test
     void whenRowHasDiffSize() {
         int[][] input = {
