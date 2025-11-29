@@ -20,6 +20,7 @@ public class MatrixIterator implements Iterator<Integer> {
         }
         return row < data.length;
     }
+
     @Override
     public Integer next() {
         if (!hasNext()) {
