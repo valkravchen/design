@@ -23,7 +23,6 @@ public class FlatMap<T> implements Iterator<T> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-
         return cursor.next();
     }
 }
