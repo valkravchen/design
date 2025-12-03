@@ -1,4 +1,12 @@
 package ru.generics;
 
-public class Predator {
+public class Predator extends Animal {
+    private String name;
+
+    @Override
+    public String toString() {
+        return "Predator{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }
