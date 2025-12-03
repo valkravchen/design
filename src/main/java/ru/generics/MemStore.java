@@ -7,7 +7,7 @@ public final class MemStore<T extends Base> implements Store<T> {
 
     @Override
     public void add(T model) {
-
+        storage.put(model.getId(), model);
     }
 
     @Override
@@ -22,6 +22,6 @@ public final class MemStore<T extends Base> implements Store<T> {
 
     @Override
     public T findById(String id) {
-        return null;
+        return storage.get(id);
     }
 }
