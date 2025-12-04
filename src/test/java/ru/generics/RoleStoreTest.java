@@ -79,4 +79,4 @@ class RoleStoreTest {
         boolean result = store.replace("10", new Role("10", "Moderator"));
         assertThat(result).isFalse();
     }
-}//
+}

@@ -8,4 +8,4 @@ public interface Store<T extends Base> {
     void delete(String id);
 
     T findById(String id);
-}//
+}
