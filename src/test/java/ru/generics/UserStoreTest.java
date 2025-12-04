@@ -81,4 +81,4 @@ class UserStoreTest {
         boolean result = store.replace("10", new User("10", "Maxim"));
         assertThat(result).isFalse();
     }
-}
+}//
