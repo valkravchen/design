@@ -8,7 +8,10 @@ public class ListUsage {
         result.add("one");
         result.add("two");
         result.add("three");
-        result.add(1, "four");
+        List<String> list = new ArrayList<>();
+        list.add("four");
+        list.add("five");
+        result.addAll(list);
         for (String string : result) {
             System.out.println("Текущий элемент: " + string);
         }
