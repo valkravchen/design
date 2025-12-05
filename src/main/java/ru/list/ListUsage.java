@@ -8,7 +8,7 @@ public class ListUsage {
         result.add("one");
         result.add("two");
         result.add("three");
-        result.add("four");
+        result.add(1, "four");
         for (String string : result) {
             System.out.println("Текущий элемент: " + string);
         }
