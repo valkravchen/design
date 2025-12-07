@@ -1,6 +1,5 @@
 package ru.collection;
 
-
 import java.util.Iterator;
 
 public class SimpleArrayList<T> implements SimpleList<T> {
