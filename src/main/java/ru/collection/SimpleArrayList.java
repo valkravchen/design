@@ -16,7 +16,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     @Override
     public void add(T value) {
 //        Objects.checkIndex(size, container.length);
-        if (size == container.length && container.length != 0) {
+        if (size == container.length) {
             arrayExpansion();
         }
         container[size++] = value;
@@ -30,7 +30,19 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 
     @Override
     public T remove(int index) {
-        return null;
+        Objects.checkIndex(index, size);
+       T deleteElement = container[index];
+        System.arraycopy(
+                container,
+                index + 1,
+                container,
+                index,
+                size - index - 1
+        );
+        container[size - 1] = null;
+        size--;
+        modCount++;
+        return deleteElement;
     }
 
     @Override
@@ -59,19 +71,16 @@ public class SimpleArrayList<T> implements SimpleList<T> {
     }
 
     private void arrayExpansion() {
-        if (container.length == 0) {
-
-        } else  {
-            container = Arrays.copyOf(container, container.length * 2);
+        container = Arrays.copyOf(container, Math.max(1, container.length * 2));
     }
-}
 
+//
 //    public void checkIndexExample(int[] array, int index) {
 //        Objects.checkIndex(index, array.length);
 //        System.out.println("Индекс " + index + " находится в пределах допустимого");
 //        System.out.println("Значение по индексу " + index + ": " + array[index]);
 //    }
-//
+
 //    public static void main(String[] args) {
 //        int size = 0;
 //        String[] strings = new String[5];
@@ -118,4 +127,5 @@ public class SimpleArrayList<T> implements SimpleList<T> {
 //        list.checkIndexExample(numbers, 3);
 //        list.checkIndexExample(numbers, 5);
 //    }
+}
 

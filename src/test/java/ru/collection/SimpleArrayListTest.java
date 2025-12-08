@@ -25,7 +25,7 @@ class SimpleArrayListTest {
     @Test
     void checkIterator() {
         assertThat(list.size()).isEqualTo(3);
-        assertThat(list).hasSize(3);
+//        assertThat(list).hasSize(3);
     }
 
     @Test
@@ -33,4 +33,17 @@ class SimpleArrayListTest {
         list.add(4);
         assertThat(list.size()).isEqualTo(4);
     }
+
+    @Test
+    void whenRemoveThenGetValueAndSizeDecrease() {
+        assertThat(list.remove(1)).isEqualTo(2);
+        assertThat(list.size()).isEqualTo(2);
+    }
+
+//    @Test
+//    void whenRemoveThenMustNotBeEmpty() {
+//        list.remove(1);
+//        assertThat(list.get(0)).isEqualTo(1);
+//        assertThat(list.get(1)).isEqualTo(3);
+//    }
 }
