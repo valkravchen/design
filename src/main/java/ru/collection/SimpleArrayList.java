@@ -68,7 +68,17 @@ public class SimpleArrayList<T> implements SimpleList<T> {
         strings = newStrings;
         System.out.println(Arrays.toString(strings));
 
+        int[] numbers = {1, 2, 3, 4, 5};
+        System.arraycopy(
+                numbers,
+                3,
+                numbers,
+                2,
+                2
+        );
 
+        numbers[numbers.length - 1] = 0;
+        System.out.println(Arrays.toString(numbers));
 
         String[] array = {"one", "two", "three", "four", "five"};
         System.out.println(Arrays.toString(array));
