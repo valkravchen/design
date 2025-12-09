@@ -39,8 +39,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
                 index,
                 size - index - 1
         );
-        container[size - 1] = null;
-        size--;
+        container[size-- - 1] = null;
         modCount++;
         return deleteElement;
     }
