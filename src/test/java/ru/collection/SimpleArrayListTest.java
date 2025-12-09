@@ -25,7 +25,7 @@ class SimpleArrayListTest {
     @Test
     void checkIterator() {
         assertThat(list.size()).isEqualTo(3);
-//        assertThat(list).hasSize(3);
+        assertThat(list).hasSize(3);
     }
 
     @Test
@@ -99,6 +99,7 @@ class SimpleArrayListTest {
                 .isInstanceOf(IndexOutOfBoundsException.class);
     }
 
+
     @Test
     void whenAddNullThenMustBeSameBehavior() {
         list = new SimpleArrayList<>(3);
@@ -115,7 +116,6 @@ class SimpleArrayListTest {
         assertThat(list.size()).isEqualTo(3);
     }
 
-
     @Test
     void whenSetByIncorrectIndexThenGetException() {
         assertThatThrownBy(() -> list.set(5, 22))
@@ -128,5 +128,102 @@ class SimpleArrayListTest {
         list.add(1);
         assertThatThrownBy(() -> list.set(2, 22))
                 .isInstanceOf(IndexOutOfBoundsException.class);
+    }
+
+
+    @Test
+    void whenGetIteratorFromEmptyListThenHasNextReturnFalse() {
+        list = new SimpleArrayList<>(5);
+        assertThat(list.iterator().hasNext()).isFalse();
+    }
+
+    @Test
+    void whenGetIteratorFromEmptyListThenNextThrowException() {
+        list = new SimpleArrayList<>(5);
+        assertThatThrownBy(list.iterator()::next)
+                .isInstanceOf(NoSuchElementException.class);
+    }
+
+    @Test
+    void whenGetIteratorTwiceThenStartAlwaysFromBeginning() {
+        assertThat(list.iterator().next()).isEqualTo(1);
+        assertThat(list.iterator().next()).isEqualTo(1);
+    }
+
+    @Test
+    void whenCheckIterator() {
+        Iterator<Integer> iterator = list.iterator();
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(iterator.next()).isEqualTo(1);
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(iterator.next()).isEqualTo(2);
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(iterator.next()).isEqualTo(3);
+        assertThat(iterator.hasNext()).isFalse();
+    }
+
+    @Test
+    void whenNoPlaceThenMustIncreaseCapacity() {
+        assertThat(list.size()).isEqualTo(3);
+        IntStream.range(3, 10).forEach(v -> list.add(v));
+        assertThat(list.size()).isEqualTo(10);
+    }
+
+    @Test
+    void whenIncreaseEmptyContainer() {
+        list = new SimpleArrayList<>(0);
+        assertThat(list.size()).isZero();
+        list.add(1);
+        assertThat(list.size()).isEqualTo(1);
+        assertThat(list.get(0)).isEqualTo(1);
+    }
+
+    @Test
+    void whenAddAfterGetIteratorHasNextThenMustBeException() {
+        Iterator<Integer> iterator = list.iterator();
+        assertThat(iterator.hasNext()).isTrue();
+        list.add(4);
+        assertThatThrownBy(iterator::hasNext)
+                .isInstanceOf(ConcurrentModificationException.class);
+    }
+
+    @Test
+    void whenRemoveAfterGetIteratorHasNextThenMustBeException() {
+        Iterator<Integer> iterator = list.iterator();
+        assertThat(iterator.hasNext()).isTrue();
+        list.remove(0);
+        assertThatThrownBy(iterator::hasNext)
+                .isInstanceOf(ConcurrentModificationException.class);
+    }
+
+    @Test
+    void whenSetAfterGetIteratorHasNextThenMustBeOk() {
+        Iterator<Integer> iterator = list.iterator();
+        assertThat(iterator.hasNext()).isTrue();
+        list.set(0, 22);
+        assertThat(iterator.hasNext()).isTrue();
+    }
+
+    @Test
+    void whenAddAfterGetIteratorThenMustBeException() {
+        Iterator<Integer> iterator = list.iterator();
+        list.add(4);
+        assertThatThrownBy(iterator::next)
+                .isInstanceOf(ConcurrentModificationException.class);
+    }
+
+    @Test
+    void whenRemoveAfterGetIteratorThenMustBeException() {
+        Iterator<Integer> iterator = list.iterator();
+        list.remove(0);
+        assertThatThrownBy(iterator::next)
+                .isInstanceOf(ConcurrentModificationException.class);
+    }
+
+    @Test
+    void whenSetAfterGetIteratorThenMustBeOk() {
+        Iterator<Integer> iterator = list.iterator();
+        list.set(0, 22);
+        assertThat(iterator.next()).isEqualTo(22);
     }
 }
