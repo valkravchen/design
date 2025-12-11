@@ -32,7 +32,6 @@ public class Algorithm<T> {
         return lowestIndex;
     }
 
-
     public static void main(String[] args) {
         int[] array = {5, 3, 6, 2, 10};
         int value = 7;
