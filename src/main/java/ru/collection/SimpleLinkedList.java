@@ -2,7 +2,7 @@ package ru.collection;
 
 import java.util.Iterator;
 
-public class SimpleLinkedList<E> implements SimpleLinked<E {
+public class SimpleLinkedList<E> implements SimpleLinked<E> {
     private int size;
     private int modCount;
     private Node<E> head;
