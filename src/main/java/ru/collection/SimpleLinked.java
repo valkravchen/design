@@ -1,4 +1,7 @@
 package ru.collection;
 
-public class SimpleLinked {
+public interface SimpleLinked<E> extends Iterable<E> {
+    void add(E value);
+
+    E get(int index);
 }
