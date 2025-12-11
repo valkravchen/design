@@ -1,6 +1,6 @@
 package ru.algorithm;
 
-public class Algorithm {
+public class Algorithm<T> {
 
     public static int binarySearch(int[] array, int value) {
         int startIndex = 0;
@@ -20,9 +20,23 @@ public class Algorithm {
         return -1;
     }
 
+    public static int findSmallest(int[] array) {
+        int lowestValue = array[0];
+        int lowestIndex = 0;
+        for (int index = 1; index < array.length; index++) {
+            if (array[index] < lowestValue) {
+                lowestValue = array[index];
+                lowestIndex = index;
+            }
+        }
+        return lowestIndex;
+    }
+
+
     public static void main(String[] args) {
-        int[] array = {1, 3, 5, 7, 9};
+        int[] array = {5, 3, 6, 2, 10};
         int value = 7;
         System.out.println(binarySearch(array, value));
+        System.out.println(findSmallest(array));
     }
 }
