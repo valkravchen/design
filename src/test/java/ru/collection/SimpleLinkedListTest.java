@@ -2,9 +2,10 @@ package ru.collection;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import org.junit.jupiter.api.*;
-import java.util.*;
 
+import org.junit.jupiter.api.*;
+
+import java.util.*;
 
 class SimpleLinkedListTest {
 
@@ -89,4 +90,4 @@ class SimpleLinkedListTest {
         assertThat(second.next()).isEqualTo(2);
         assertThat(second.hasNext()).isFalse();
     }
-}
+}//
