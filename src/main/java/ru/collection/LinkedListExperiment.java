@@ -17,16 +17,6 @@ public class LinkedListExperiment {
         System.out.println(head.item);  // 10
         head.next = new Node<>(20, null);
         System.out.println(head.next.item);
-        // Хотим добавить 20 в конец
-        // Что нужно сделать?
-        // 1. Найти последний узел (у которого next == null)
-        // 2. Создать новый узел с 20
-        // 3. Связать последний узел с новым
-
-        // Твой код здесь
-
-        // Проверка
-
     }
 }
 

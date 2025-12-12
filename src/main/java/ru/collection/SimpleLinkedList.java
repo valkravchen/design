@@ -35,7 +35,29 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new Iterator<E>() {
+            int expectedModCount = modCount;
+            Node<E> current = head;
+
+            @Override
+            public boolean hasNext() {
+                if (expectedModCount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
+
+                return current != null;
+            }
+
+            @Override
+            public E next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                E item = current.item;
+                current = current.next;
+                return item;
+            }
+        };
     }
 
     private static class Node<E> {
