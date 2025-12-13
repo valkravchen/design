@@ -1,5 +1,7 @@
 package ru.algorithm;
 
+import java.util.Arrays;
+
 public class Algorithm<T> {
 
     public static int binarySearch(int[] array, int value) {
@@ -32,10 +34,20 @@ public class Algorithm<T> {
         return lowestIndex;
     }
 
+    public static int[] selectionSort(int[] array) {
+        int[] newArray = new int[array.length];
+        for (int i = 0; i < array.length ; i++) {
+            int lowestIndex = findSmallest(array);
+            newArray[i] = lowestIndex;
+        }
+        return newArray;
+    }
+
     public static void main(String[] args) {
         int[] array = {5, 3, 6, 2, 10};
         int value = 7;
         System.out.println(binarySearch(array, value));
         System.out.println(findSmallest(array));
+        System.out.println(Arrays.toString(selectionSort(array)));
     }
 }
