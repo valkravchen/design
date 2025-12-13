@@ -26,9 +26,8 @@ public class SimpleLinkedList<E> implements SimpleLinked<E> {
     public E get(int index) {
         Objects.checkIndex(index, size);
         Node<E> current = head;
-        while (index > 0) {
+        for (int i = 0; i < index; i++) {
             current = current.next;
-            index--;
         }
         return current.item;
     }
