@@ -44,7 +44,7 @@ public class HighArray {
     public void display() {
         for (int i = 0; i < countElements; i++) {
             System.out.print(array[i] + " ");
-            System.out.println();
         }
+        System.out.println();
     }
 }
