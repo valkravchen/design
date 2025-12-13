@@ -7,7 +7,7 @@ public class LowArray {
         this.array = new long[size];
     }
 
-    public void serElement(int index, long value) {
+    public void setElement(int index, long value) {
         array[index] = value;
     }
 
