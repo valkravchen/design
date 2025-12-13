@@ -36,7 +36,7 @@ public class Algorithm<T> {
 
     public static int[] selectionSort(int[] array) {
         int[] newArray = new int[array.length];
-        for (int i = 0; i < array.length ; i++) {
+        for (int i = 0; i < array.length; i++) {
             int lowestIndex = findSmallest(array);
             newArray[i] = lowestIndex;
         }
