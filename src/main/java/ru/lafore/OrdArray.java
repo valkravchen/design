@@ -34,7 +34,7 @@ public class OrdArray {
     public void insert(long value) {
         int index;
         for (index = 0; index < countElements; index++) {
-            if (array[index] == value) {
+            if (array[index] > value) {
                 break;
             }
         }
@@ -43,5 +43,12 @@ public class OrdArray {
         }
         array[index] = value;
         countElements++;
+    }
+
+    public void display() {
+        for (int i = 0; i < countElements; i++) {
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
     }
 }
