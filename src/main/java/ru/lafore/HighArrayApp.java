@@ -19,7 +19,7 @@ public class HighArrayApp {
 
         array.display();
 
-        int searchKey = 35;
+        int searchKey = 33;
 
         if (array.find(searchKey)) {
             System.out.println("Элемент " + searchKey + " найден");
