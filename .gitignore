@@ -34,3 +34,6 @@ out
 .idea/
 target/
 
+/src/main/java/ru/iterator/WhileExample2.java
+/src/main/java/ru/iterator/WhileExample.java
+/src/test/java/ru/iterator/TwoDimensionalArrayIterator.java
