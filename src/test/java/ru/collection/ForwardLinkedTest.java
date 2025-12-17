@@ -128,7 +128,6 @@ class ForwardLinkedTest {
         assertThat(iterator.next()).isEqualTo(2);
     }
 
-
     @Test
     void whenGetIteratorTwiceThenEveryFromBegin() {
         Iterator<Integer> first = list.iterator();
