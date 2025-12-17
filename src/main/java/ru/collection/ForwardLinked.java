@@ -1,6 +1,9 @@
 package ru.collection;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class ForwardLinked<T> implements Iterable<T> {
     private int size;
@@ -21,9 +24,44 @@ public class ForwardLinked<T> implements Iterable<T> {
         modCount++;
     }
 
+    public T get(int index) {
+        Objects.checkIndex(index, size);
+        Node<T> current = head;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        return current.item;
+    }
+
+    public T deleteFirst() {
+        return null;
+    }
+
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new Iterator<T>() {
+            int expectedModCount = modCount;
+            Node<T> current = head;
+
+            @Override
+            public boolean hasNext() {
+                if (expectedModCount != modCount) {
+                    throw new ConcurrentModificationException();
+                }
+
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                T item = current.item;
+                current = current.next;
+                return item;
+            }
+        };
     }
 
     private static class Node<T> {
