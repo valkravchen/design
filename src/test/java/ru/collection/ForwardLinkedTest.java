@@ -11,9 +11,7 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 class ForwardLinkedTest {
-
     private ForwardLinked<Integer> list;
-
 
     @BeforeEach
     public void initData() {
@@ -129,6 +127,7 @@ class ForwardLinkedTest {
         assertThat(iterator.next()).isEqualTo(1);
         assertThat(iterator.next()).isEqualTo(2);
     }
+
 
     @Test
     void whenGetIteratorTwiceThenEveryFromBegin() {
