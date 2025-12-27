@@ -1,6 +1,7 @@
 package ru.collection;
 
-public class SimpleQueue {
-    public static void main(String[] args) {
+public class SimpleQueue<T> {
+    private final SimpleStack<T> input = new SimpleStack<>();
+    private final  SimpleStack<T> output = new SimpleStack<>();
     }
-}
+
